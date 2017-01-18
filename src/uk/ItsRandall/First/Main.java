@@ -2,10 +2,14 @@ package uk.ItsRandall.First;
 
 import java.io.PrintStream;
 import net.md_5.bungee.api.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.Server;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -46,5 +50,23 @@ public class Main
     {
         Player p = e.getPlayer();
         e.setFormat(ReferenceManager.prefix);
+    }
+
+    @EventHandler
+    public void onBlockBreak(BlockBreakEvent e) {
+        if (e.isCancelled()) return;
+
+        Block b = e.getBlock();
+
+        if (b.getType() != Material.LOG && b.getType() != Material.LOG_2) {
+            return;
+        }
+
+        b = b.getRelative(BlockFace.UP);
+
+        while (b.getType() == Material.LOG || b.getType() == Material.LOG_2) {
+            b.breakNaturally();
+            b = b.getRelative(BlockFace.UP);
+        }
     }
 }
