@@ -31,14 +31,14 @@ public class Main
     public void onPlayerJoin(PlayerJoinEvent event)
     {
         Player player = event.getPlayer();
-        event.setJoinMessage("�7[�a+�7] �7" + player.getName());
+        event.setJoinMessage("§7[§a+§7] §7" + player.getName());
     }
 
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event)
     {
         Player player = event.getPlayer();
-        event.setQuitMessage("�7[�c-�7] �7" + player.getName());
+        event.setQuitMessage("§7[§c-§7] §7" + player.getName());
     }
 
     @EventHandler
