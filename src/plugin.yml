@@ -1,0 +1,4 @@
+name: TestPlugin
+version: 1.0
+author: ItsRandall
+main: uk.ItsRandall.First.Main
